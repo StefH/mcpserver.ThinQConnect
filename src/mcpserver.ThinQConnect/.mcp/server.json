@@ -1,0 +1,78 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
+  "description": "A hybrid (SSE or stdio) MCP server for the LG ThinQ Connect Route API and Device API.",
+  "name": "io.github.StefH/mcpserver.ThinQConnect",
+  "packages": [
+    {
+      "registry_name": "nuget",
+      "name": "mcpserver.ThinQConnect",
+      "version": "0.1.0",
+      "package_arguments": [
+        {
+          "type": "named",
+          "name": "--country",
+          "description": "ISO 3166-1 alpha-2 country code used for ThinQ requests, for example US or GB."
+        },
+        {
+          "type": "named",
+          "name": "--pat",
+          "description": "ThinQ Personal Access Token used for Device API requests."
+        },
+        {
+          "type": "named",
+          "name": "--servicePhase",
+          "description": "ThinQ service phase for Route API calls. Defaults to OP."
+        },
+        {
+          "type": "named",
+          "name": "--clientId",
+          "description": "Optional client identifier sent as x-client-id."
+        },
+        {
+          "type": "named",
+          "name": "--baseUrl",
+          "description": "Optional ThinQ API base URL override. When omitted, the server resolves it via the Route API."
+        },
+        {
+          "type": "named",
+          "name": "--stdio",
+          "description": "Run this MCP server as stdio."
+        },
+        {
+          "type": "named",
+          "name": "--sse",
+          "description": "Run this MCP server as SSE."
+        }
+      ],
+      "environment_variables": [
+        {
+          "name": "THINQ_COUNTRY",
+          "description": "ISO 3166-1 alpha-2 country code used for ThinQ requests."
+        },
+        {
+          "name": "THINQ_PAT",
+          "description": "ThinQ Personal Access Token used for Device API requests."
+        },
+        {
+          "name": "THINQ_SERVICE_PHASE",
+          "description": "ThinQ service phase for Route API calls. Defaults to OP."
+        },
+        {
+          "name": "THINQ_CLIENT_ID",
+          "description": "Optional client identifier sent as x-client-id."
+        },
+        {
+          "name": "THINQ_BASE_URL",
+          "description": "Optional ThinQ API base URL override."
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/StefH/mcpserver.ThinQConnect",
+    "source": "github"
+  },
+  "version_detail": {
+    "version": "0.1.0"
+  }
+}
