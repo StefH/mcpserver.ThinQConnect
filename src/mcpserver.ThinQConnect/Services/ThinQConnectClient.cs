@@ -2,14 +2,23 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Microsoft.Extensions.DependencyInjection;
 using ModelContextProtocolServer.ThinQConnect.Configuration;
 
 namespace ModelContextProtocolServer.ThinQConnect.Services;
 
 internal sealed class ThinQConnectClient
 {
+    internal const string HttpClientName = "ThinQConnect";
+
     private readonly HttpClient _httpClient;
     private readonly ThinQConnectOptions _options;
+
+    internal ThinQConnectClient(ThinQConnectOptions options, IHttpClientFactory httpClientFactory)
+    {
+        _options = options;
+        _httpClient = httpClientFactory.CreateClient(HttpClientName);
+    }
 
     internal ThinQConnectClient(ThinQConnectOptions options, HttpClient? httpClient = null)
     {
