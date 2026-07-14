@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.7.11925.98 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+	ProjectSection(SolutionItems) = preProject
+		src\Update-ServerJsonVersion.ps1 = src\Update-ServerJsonVersion.ps1
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcpserver.ThinQConnect", "src\mcpserver.ThinQConnect\mcpserver.ThinQConnect.csproj", "{5DB0B373-4912-4397-8A43-0190285472AE}"
 EndProject
@@ -52,5 +55,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5DB0B373-4912-4397-8A43-0190285472AE} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{CD520F12-235E-4E22-B68F-A1F45CF43BEB} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD4E028C-96ED-4C63-8D6E-ECA9C70C4E34}
 	EndGlobalSection
 EndGlobal

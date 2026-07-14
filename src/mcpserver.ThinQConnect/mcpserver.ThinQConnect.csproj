@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <Version>0.1.0</Version>
-    <PackageId>mcpserver.ThinQConnect</PackageId>
-    <ToolCommandName>mcpserver.ThinQConnect</ToolCommandName>
+    <PackageId>mcpserver.thinqconnect</PackageId>
+    <ToolCommandName>mcpserver.thinqconnect</ToolCommandName>
     <RootNamespace>ModelContextProtocolServer.ThinQConnect</RootNamespace>
-    <AssemblyName>mcpserver.ThinQConnect</AssemblyName>
+    <AssemblyName>mcpserver.thinqconnect</AssemblyName>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -22,8 +22,8 @@
     <IsPackable>true</IsPackable>
     <PackAsTool>true</PackAsTool>
     <PackageType>McpServer</PackageType>
-    <PackageTags>MCP;ModelContextProtocol;AI;LLM;Server;Stdio;Sse;ThinQ;LG</PackageTags>
-    <Description>A hybrid (SSE or stdio) MCP server for the LG ThinQ Connect Route API and Device API.</Description>
+    <PackageTags>MCP;ModelContextProtocol;AI;Server;Stdio;Sse;ThinQ;LG</PackageTags>
+    <Description>A hybrid (SSE or stdio) MCP server for the LG ThinQ Smart Solutions API.</Description>
     <PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -44,5 +44,15 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <Target Name="UpdateServerJsonVersion" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <ServerJsonPath>$(MSBuildProjectDirectory)\.mcp\server.json</ServerJsonPath>
+      <CSProjPath>$(MSBuildProjectDirectory)\mcpserver.ThinQConnect.csproj</CSProjPath>
+      <UpdateScriptPath>$(MSBuildProjectDirectory)\..\Update-ServerJsonVersion.ps1</UpdateScriptPath>
+    </PropertyGroup>
+
+    <Exec Command="pwsh -NoProfile -ExecutionPolicy Bypass -File &quot;$(UpdateScriptPath)&quot; -ServerJsonPath &quot;$(ServerJsonPath)&quot; -CSProjPath &quot;$(CSProjPath)&quot;" />
+  </Target>
 
 </Project>
