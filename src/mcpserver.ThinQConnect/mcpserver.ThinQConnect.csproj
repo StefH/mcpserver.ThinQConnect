@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <PackageId>mcpserver.thinqconnect</PackageId>
+    <ToolCommandName>mcpserver.thinqconnect</ToolCommandName>
+    <RootNamespace>ModelContextProtocolServer.ThinQConnect</RootNamespace>
+    <AssemblyName>mcpserver.thinqconnect</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+    <PackageType>McpServer</PackageType>
+    <PackageTags>MCP;ModelContextProtocol;AI;Server;Stdio;Sse;ThinQ;LG</PackageTags>
+    <Description>A hybrid (SSE or stdio) MCP server for the LG ThinQ Connect Smart Solutions API.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include=".mcp\server.json" Pack="true" PackagePath="/.mcp/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="mcpserver.ThinQConnect.stdio.ConsoleApp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ModelContextProtocolServer.Hybrid" Version="0.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ThinQConnectApi\ThinQConnectApi.csproj" />
+  </ItemGroup>
+
+  <Target Name="UpdateServerJsonVersion" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <ServerJsonPath>$(MSBuildProjectDirectory)\.mcp\server.json</ServerJsonPath>
+      <CSProjPath>$(MSBuildProjectDirectory)\..\Directory.Build.props</CSProjPath>
+      <UpdateScriptPath>$(MSBuildProjectDirectory)\..\Update-ServerJsonVersion.ps1</UpdateScriptPath>
+    </PropertyGroup>
+
+    <Exec Command="pwsh -NoProfile -ExecutionPolicy Bypass -File &quot;$(UpdateScriptPath)&quot; -ServerJsonPath &quot;$(ServerJsonPath)&quot; -CSProjPath &quot;$(CSProjPath)&quot;" />
+  </Target>
+
+</Project>
