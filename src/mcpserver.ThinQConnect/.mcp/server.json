@@ -1,0 +1,72 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-12-11/server.json",
+  "description": "A hybrid (SSE or stdio) MCP server for the LG ThinQ Connect Smart Solutions API",
+  "name": "io.github.StefH/mcpserver.ThinQConnect",
+  "packages": [
+    {
+      "registry_name": "nuget",
+      "name": "mcpserver.ThinQConnect",
+      "version": "0.0.1-preview-01",
+      "package_arguments": [
+        {
+          "type": "named",
+          "format": "string",
+          "name": "--country",
+          "description": "Optional ISO 3166-1 alpha-2 country code used for ThinQ requests, for example US or GB. Default value is NL."
+        },
+        {
+          "type": "named",
+          "format": "string",
+          "name": "--pat",
+          "isRequired": true,
+          "isSecret": true,
+          "description": "ThinQ Personal Access Token used for API requests."
+        },
+        {
+          "type": "named",
+          "format": "string",
+          "name": "--baseurl",
+          "description": "Optional ThinQ API base URL override. When omitted, the server uses https://api-eic.lgthinq.com."
+        },
+        {
+          "type": "named",
+          "format": "string",
+          "name": "--stdio",
+          "description": "Run this MCP server as stdio."
+        },
+        {
+          "type": "named",
+          "format": "string",
+          "name": "--sse",
+          "description": "Run this MCP server as SSE."
+        }
+      ],
+      "environment_variables": [
+        {
+          "name": "THINQ_COUNTRY",
+          "format": "string",
+          "description": "Optional ISO 3166-1 alpha-2 country code used for ThinQ requests, for example US or GB. Default value is NL."
+        },
+        {
+          "name": "THINQ_PAT",
+          "format": "string",
+          "isRequired": true,
+          "isSecret": true,
+          "description": "ThinQ Personal Access Token used for API requests."
+        },
+        {
+          "name": "THINQ_BASEURL",
+          "format": "string",
+          "description": "Optional ThinQ API base URL override. When omitted, the server uses https://api-eic.lgthinq.com."
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/StefH/mcpserver.ThinQConnect",
+    "source": "github"
+  },
+  "version_detail": {
+    "version": "0.0.1-preview-01"
+  }
+}

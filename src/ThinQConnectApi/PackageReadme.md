@@ -1,22 +1,7 @@
-# ![Project Icon](./resources/icon_32x32.png) mcpserver.ThinQConnect
-A MCP server as dotnet tool for the LG ThinQ Connect Smart Solutions API.
+# ThinQConnectApi
+LG ThinQ Connect API.
 
-## 📦 NuGet
-[![NuGet Badge](https://img.shields.io/nuget/v/ThinQConnectApi)](https://www.nuget.org/packages/ThinQConnectApi)
-[![NuGet Badge](https://img.shields.io/nuget/v/mcpserver.ThinQConnect)](https://www.nuget.org/packages/mcpserver.ThinQConnect)
-
-## `dnx`
-```cmd
-dnx mcpserver.ThinQConnect --yes
-```
-
-## `dotnet tool`
-### Installation
-```cmd
-dotnet tool install --global mcpserver.ThinQConnect
-```
-
-## 🛠️ Supported Tools
+## 🛠️ Supported Calls
 - `GetRoute`: Resolve the ThinQ backend endpoints for the configured country.
 - `GetDevices`: List ThinQ devices available for the configured PAT.
 - `GetDeviceProfile`: Retrieve the profile JSON for a specific ThinQ device.

@@ -1,9 +1,5 @@
-# ![Project Icon](./resources/icon_32x32.png) mcpserver.ThinQConnect
-A MCP server as dotnet tool for the LG ThinQ Connect Smart Solutions API.
-
-## 📦 NuGet
-[![NuGet Badge](https://img.shields.io/nuget/v/ThinQConnectApi)](https://www.nuget.org/packages/ThinQConnectApi)
-[![NuGet Badge](https://img.shields.io/nuget/v/mcpserver.ThinQConnect)](https://www.nuget.org/packages/mcpserver.ThinQConnect)
+# mcpserver.ThinQConnect
+A MCP server as dotnet tool for the LG ThinQ Connect Route API and Device API.
 
 ## `dnx`
 ```cmd
