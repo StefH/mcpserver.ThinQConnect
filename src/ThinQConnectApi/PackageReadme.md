@@ -6,7 +6,7 @@ LG ThinQ Connect API.
 - `GetDevices`: List ThinQ devices available for the configured PAT.
 - `GetDeviceProfile`: Retrieve the profile JSON for a specific ThinQ device.
 - `GetDeviceState`: Retrieve the current state JSON for a specific ThinQ device.
-- `ControlDevice`: Send a control payload JSON document to a specific ThinQ device *[Not implemented yet]*.
+- `ControlDevice`: Send a control payload JSON document to a specific ThinQ device.
 
 ## ⚙️ Configuration
 The server reads configuration from either command-line arguments or environment variables.
