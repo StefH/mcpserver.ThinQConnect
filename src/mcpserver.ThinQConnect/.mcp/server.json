@@ -6,7 +6,7 @@
     {
       "registry_name": "nuget",
       "name": "mcpserver.ThinQConnect",
-      "version": "0.0.1-preview-01",
+      "version": "0.0.1",
       "package_arguments": [
         {
           "type": "named",
@@ -67,6 +67,6 @@
     "source": "github"
   },
   "version_detail": {
-    "version": "0.0.1-preview-01"
+    "version": "0.0.1"
   }
 }

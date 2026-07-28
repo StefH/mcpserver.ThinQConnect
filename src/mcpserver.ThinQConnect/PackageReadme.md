@@ -34,22 +34,6 @@ The server reads configuration from either command-line arguments or environment
 - `THINQ_PAT`
 - `THINQ_BASEURL`
 
-## Claude Desktop
-```json
-{
-  "mcpServers": {
-    "thinQConnect": {
-      "command": "mcpserver.ThinQConnect",
-      "args": [],
-      "env": {
-        "THINQ_COUNTRY": "NL",
-        "THINQ_PAT": "your-thinq-pat"
-      }
-    }
-  }
-}
-```
-
 ## Notes
 - The server uses the documented ThinQ Route API to resolve the correct backend for Device API calls.
 - ThinQ documents a fixed `x-api-key` for these APIs; this server uses that value by default.
