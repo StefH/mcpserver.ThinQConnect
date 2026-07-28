@@ -3,10 +3,12 @@ using Azure.AI.OpenAI;
 using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
 
+var cd = Directory.GetCurrentDirectory();
+
 var mcpClient = await McpClient.CreateAsync(new StdioClientTransport(new()
 {
-    Command = "dotnet run --project", // or "dotnet", "python", whatever launches your server
-    Arguments = [@"C:\dev\GitHub\mcpserver.ThinQConnect\src\mcpserver.ThinQConnect\mcpserver.ThinQConnect.csproj"],
+    Command = "dotnet run --project",
+    Arguments = [$"{cd}/../../../../../src/mcpserver.ThinQConnect/mcpserver.ThinQConnect.csproj"],
     Name = "ThinQConnect"
 }));
 
