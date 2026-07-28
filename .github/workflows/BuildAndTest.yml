@@ -26,7 +26,7 @@ jobs:
         include-prerelease: true
 
     - name: 'Build'
-      run: dotnet build 'mcpserver.ThinQConnect - Solution' -c Release
+      run: dotnet build 'mcpserver.ThinQConnect - Solution.sln' -c Release
 
     # - name: 'Test McpDotNet'
     #   run: dotnet test './test/McpDotNet.Extensions.SemanticKernel.Tests/McpDotNet.Extensions.SemanticKernel.Tests.csproj' -c Release

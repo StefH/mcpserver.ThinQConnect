@@ -1,3 +1,4 @@
-#  ()
+# 0.0.1 (28 July 2026)
+- #3 Add ControlDevice [enhancement]
 
 The full release notes can be found here: https://github.com/StefH/mcpserver.ThinQConnect/blob/main/ReleaseNotes.md
