@@ -12,7 +12,7 @@ public static class ThinQConnectClientServices
 
         services.AddHttpClient(ThinQConnectClient.ThinQConnectHttpClientName, httpClient =>
         {
-            const string defaultApiKey = "v6GFvkweNo7DK7yD3ylIZ9w52aKBU0eJ7wLXkSR3";        
+            const string defaultApiKey = "v6GFvkweNo7DK7yD3ylIZ9w52aKBU0eJ7wLXkSR3";
             const string defaultCountry = "NL";
             const string generatedClientId = "mcpserver-thinqconnect";
             const string defaultBaseUrl = "https://api-eic.lgthinq.com";

@@ -10,6 +10,8 @@ public interface IThinQConnectClient
 
     Task<Devices> GetDevicesAsync(CancellationToken cancellationToken = default);
 
+    Task<string> GetDevicesRawAsync(CancellationToken cancellationToken = default);
+
     Task<string> GetDeviceStateAsync([Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default);
 
     Task<ThinQRoute> GetRouteAsync(CancellationToken cancellationToken = default);

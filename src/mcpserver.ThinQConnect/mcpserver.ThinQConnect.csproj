@@ -22,11 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ModelContextProtocolServer.Hybrid" Version="0.8.0" />
+    <PackageReference Include="ModelContextProtocolServer.Hybrid" Version="0.9.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ThinQConnectApi\ThinQConnectApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <Target Name="UpdateServerJsonVersion" BeforeTargets="BeforeBuild">

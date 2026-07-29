@@ -1,6 +1,4 @@
-﻿using ThinQConnectApi.Models;
-
-namespace ThinQConnectApi.Models.Route;
+﻿namespace ThinQConnectApi.Models.Route;
 
 public class ThinQRoute : BaseModel
 {

@@ -4,5 +4,5 @@ public abstract class BaseModel
 {
     public required string MessageId { get; set; }
 
-    public DateTime Timestamp { get; set; }
+    public DateTimeOffset Timestamp { get; set; }
 }
