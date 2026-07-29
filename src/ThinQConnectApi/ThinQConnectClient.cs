@@ -35,6 +35,11 @@ public class ThinQConnectClient(IHttpClientFactory httpClientFactory, IConfigura
         return httpClient.GetFromJsonAsync<Devices>("/devices", cancellationToken)!;
     }
 
+    public Task<string> GetDevicesRawAsync(CancellationToken cancellationToken = default)
+    {
+        return httpClient.GetStringAsync("/devices", cancellationToken);
+    }
+
     public Task<string> GetDeviceProfileAsync(
         [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default)
     {
@@ -50,7 +55,7 @@ public class ThinQConnectClient(IHttpClientFactory httpClientFactory, IConfigura
     public async Task<string> ControlDeviceAsync(
         [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId,
         [Description("A JSON object string containing the exact control payload to send to ThinQ.")] string payloadJson,
-        [Description("When true, sends the x-conditional-control header so the command only executes in controllable states.")] bool conditionalControl = false, 
+        [Description("When true, sends the x-conditional-control header so the command only executes in controllable states.")] bool conditionalControl = false,
         CancellationToken cancellationToken = default)
     {
         using var request = new HttpRequestMessage(HttpMethod.Post, $"/devices/{deviceId}/control")

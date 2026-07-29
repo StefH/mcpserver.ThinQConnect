@@ -1,6 +1,4 @@
-﻿using ThinQConnectApi.Models;
-
-namespace ThinQConnectApi.Models.Devices;
+﻿namespace ThinQConnectApi.Models.Devices;
 
 public class Devices : BaseModel
 {
