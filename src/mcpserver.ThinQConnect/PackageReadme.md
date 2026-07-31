@@ -39,6 +39,24 @@ The server reads configuration from either command-line arguments or environment
 - ThinQ documents a fixed `x-api-key` for these APIs; this server uses that value by default.
 - `ControlDevice` accepts raw JSON so it can pass through the device-specific control payload described by LG's device profiles.
 
+## Claude Desktop
+```json
+{
+  "mcpServers": {
+    "thinqconnect-mcp": {
+      "command": "dnx",
+      "args": [
+        "mcpserver.ThinQConnect"
+      ],
+      "env": {
+        "THINQ_PAT": "thinqpat_***"
+      }
+    }
+  },
+  . . .
+}
+```
+
 ---
 
 ## Sponsors

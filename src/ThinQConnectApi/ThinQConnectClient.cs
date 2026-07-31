@@ -60,7 +60,7 @@ public class ThinQConnectClient(IHttpClientFactory httpClientFactory, IConfigura
     {
         using var request = new HttpRequestMessage(HttpMethod.Post, $"/devices/{deviceId}/control")
         {
-            Content = new StringContent(payloadJson, Encoding.UTF8, "application/json")
+            Content = JsonContent.Create(payloadJson)
         };
 
         if (conditionalControl)

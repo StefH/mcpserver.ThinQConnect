@@ -40,19 +40,22 @@ The server reads configuration from either command-line arguments or environment
 - `THINQ_PAT`
 - `THINQ_BASEURL`
 
+
 ## Claude Desktop
 ```json
 {
   "mcpServers": {
-    "thinQConnect": {
-      "command": "mcpserver.ThinQConnect",
-      "args": [],
+    "thinqconnect-mcp": {
+      "command": "dnx",
+      "args": [
+        "mcpserver.ThinQConnect"
+      ],
       "env": {
-        "THINQ_COUNTRY": "NL",
-        "THINQ_PAT": "your-thinq-pat"
+        "THINQ_PAT": "thinqpat_***"
       }
     }
-  }
+  },
+  . . .
 }
 ```
 
