@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <PackageId>mcpserver.thinqconnect</PackageId>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ModelContextProtocolServer.Hybrid" Version="0.9.0" />
+    <PackageReference Include="ModelContextProtocolServer.Hybrid" Version="0.10.0" />
   </ItemGroup>
 
   <ItemGroup>

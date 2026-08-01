@@ -9,6 +9,8 @@ public interface IThinQConnectClient
 {
     Task<JsonElement> GetDeviceProfileAsync([Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default);
 
+    Task<string> GetDeviceProfileRawAsync([Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default);
+
     Task<Devices> GetDevicesAsync(CancellationToken cancellationToken = default);
 
     Task<string> GetDevicesRawAsync(CancellationToken cancellationToken = default);
