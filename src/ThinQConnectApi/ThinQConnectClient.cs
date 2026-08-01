@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Net.Http.Json;
-using System.Text;
+using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using ThinQConnectApi.Models.Devices;
 using ThinQConnectApi.Models.Route;
@@ -40,27 +40,61 @@ public class ThinQConnectClient(IHttpClientFactory httpClientFactory, IConfigura
         return httpClient.GetStringAsync("/devices", cancellationToken);
     }
 
-    public Task<string> GetDeviceProfileAsync(
+    public Task<JsonElement> GetDeviceProfileAsync(
+        [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default)
+    {
+        return httpClient.GetFromJsonAsync<JsonElement>($"/devices/{deviceId}/profile", cancellationToken);
+    }
+
+    public Task<string> GetDeviceProfileRawAsync(
         [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default)
     {
         return httpClient.GetStringAsync($"/devices/{deviceId}/profile", cancellationToken);
     }
 
-    public Task<string> GetDeviceStateAsync(
+    public Task<JsonElement> GetDeviceStateAsync(
         [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default)
+    {
+        return httpClient.GetFromJsonAsync<JsonElement>($"/devices/{deviceId}/state", cancellationToken);
+    }
+
+    public Task<string> GetDeviceStateRawAsync(
+    [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId, CancellationToken cancellationToken = default)
     {
         return httpClient.GetStringAsync($"/devices/{deviceId}/state", cancellationToken);
     }
 
-    public async Task<string> ControlDeviceAsync(
+    public async Task<JsonElement> ControlDeviceAsync(
         [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId,
-        [Description("A JSON object string containing the exact control payload to send to ThinQ.")] string payloadJson,
+        [Description("A JSON object string containing the exact control payload to send to ThinQ.")] JsonElement payload,
         [Description("When true, sends the x-conditional-control header so the command only executes in controllable states.")] bool conditionalControl = false,
         CancellationToken cancellationToken = default)
     {
         using var request = new HttpRequestMessage(HttpMethod.Post, $"/devices/{deviceId}/control")
         {
-            Content = JsonContent.Create(payloadJson)
+            Content = JsonContent.Create(payload)
+        };
+
+        if (conditionalControl)
+        {
+            request.Headers.TryAddWithoutValidation("x-conditional-control", "true");
+        }
+
+        using var response = await httpClient.SendAsync(request, cancellationToken);
+        response.EnsureSuccessStatusCode();
+
+        return await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);
+    }
+
+    public async Task<string> ControlDeviceRawAsync(
+        [Description("The ThinQ device identifier returned by GetDevices.")] string deviceId,
+        [Description("A JSON object string containing the exact control payload to send to ThinQ.")] string payload,
+        [Description("When true, sends the x-conditional-control header so the command only executes in controllable states.")] bool conditionalControl = false,
+        CancellationToken cancellationToken = default)
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Post, $"/devices/{deviceId}/control")
+        {
+            Content = JsonContent.Create(payload)
         };
 
         if (conditionalControl)
