@@ -67,6 +67,8 @@ static async Task<(string Name, McpClient Client, int ProcessId)> CreateHttpClie
 {
     var processId = StartThinQConnectMcpHttpServer();
 
+    await Task.Delay(2000); // Wait for the server to start
+
     var client = await McpClient.CreateAsync(new HttpClientTransport(new HttpClientTransportOptions
     {
         Endpoint = new Uri("https://localhost:60433"),
