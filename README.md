@@ -22,8 +22,11 @@ dotnet tool install --global mcpserver.ThinQConnect
 - `GetRoute`: Resolve the ThinQ backend endpoints for the configured country.
 - `GetDevices`: List ThinQ devices available for the configured PAT.
 - `GetDeviceProfile`: Retrieve the profile JSON for a specific ThinQ device.
+- `GetDeviceProfiles`: Retrieve the profile JSON for multiple ThinQ devices.
 - `GetDeviceState`: Retrieve the current state JSON for a specific ThinQ device.
-- `ControlDevice`: Send a control payload JSON document to a specific ThinQ device.
+- `GetDeviceStates`: Retrieve the current state JSON for multiple ThinQ devices.
+- `ControlDevice`: Send a control payload JSON to a specific ThinQ device.
+- `ControlDevices`: Send a control payload JSON to multiple ThinQ devices.
 
 ## ⚙️ Configuration
 The server reads configuration from either command-line arguments or environment variables.
