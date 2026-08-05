@@ -1,6 +1,9 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Net;
+using System.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
+using Polly.Extensions.Http;
 
 namespace ThinQConnectApi;
 
@@ -29,6 +32,13 @@ public static class ThinQConnectClientServices
             httpClient.DefaultRequestHeaders.TryAddWithoutValidation("x-client-id", generatedClientId);
 
             httpClient.BaseAddress = new Uri(baseUrl);
+        })
+        .AddPolicyHandler(_ =>
+        {
+            return HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .OrResult(response => response.StatusCode == (HttpStatusCode)429)
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         });
 
         services.AddTransient<IThinQConnectClient, ThinQConnectClient>();

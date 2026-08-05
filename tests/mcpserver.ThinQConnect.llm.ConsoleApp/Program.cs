@@ -14,7 +14,7 @@ IChatClient chatClient = azureClient.GetChatClient("gpt-5")
     .UseFunctionInvocation()
     .Build();
 
-foreach (var (name, client, processId) in new[] { await CreateHttpClientAsync(), await CreateStdioClientAsync() })
+foreach (var (name, client, processId) in new[] { await CreateStdioClientAsync() }) // , await CreateHttpClientAsync()
 {
     Console.WriteLine("\r\nMcpClient: " + name);
 
@@ -22,7 +22,7 @@ foreach (var (name, client, processId) in new[] { await CreateHttpClientAsync(),
 
     var chatOptions = new ChatOptions
     {
-        Instructions = "You are a helpful assistant that can answer questions about LG Devices. Use the tools provided to fetch information when necessary.",
+        Instructions = client.ServerInstructions,
         Tools = [.. mcpTools] // MCP tools already implement AITool
     };
 
